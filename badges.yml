@@ -1,0 +1,25 @@
+badges:
+  - name: Build Status
+    url: "https://img.shields.io/github/actions/workflow/status/chirag127/WebVision-AI-Image-Text-Extractor-Browser-Extension/ci.yml?style=flat-square"
+    markdown: "[![Build Status](https://img.shields.io/github/actions/workflow/status/chirag127/WebVision-AI-Image-Text-Extractor-Browser-Extension/ci.yml?style=flat-square)
+  - name: Code Coverage
+    url: "https://img.shields.io/codecov/c/github/chirag127/WebVision-AI-Image-Text-Extractor-Browser-Extension?style=flat-square"
+    markdown: "[![Code Coverage](https://img.shields.io/codecov/c/github/chirag127/WebVision-AI-Image-Text-Extractor-Browser-Extension?style=flat-square)
+  - name: Language
+    url: "https://img.shields.io/badge/Language-TypeScript-3178C6?style=flat-square"
+    markdown: "[![Language](https://img.shields.io/badge/Language-TypeScript-3178C6?style=flat-square)
+  - name: Framework
+    url: "https://img.shields.io/badge/Framework-Vite%20-%23646CFF?style=flat-square"
+    markdown: "[![Framework](https://img.shields.io/badge/Framework-Vite%20-%23646CFF?style=flat-square)
+  - name: License
+    url: "https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue?style=flat-square"
+    markdown: "[![License](https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue?style=flat-square)
+  - name: GitHub Stars
+    url: "https://img.shields.io/github/stars/chirag127/WebVision-AI-Image-Text-Extractor-Browser-Extension?style=flat-square"
+    markdown: "[![GitHub Stars](https://img.shields.io/github/stars/chirag127/WebVision-AI-Image-Text-Extractor-Browser-Extension?style=flat-square)
+  - name: Gemini Status
+    url: "https://img.shields.io/badge/AI%20Engine-Gemini%20API-FF9900?style=flat-square"
+    markdown: "[![AI Engine](https://img.shields.io/badge/AI%20Engine-Gemini%20API-FF9900?style=flat-square)
+  - name: OCR/TTS Enabled
+    url: "https://img.shields.io/badge/Features-OCR%20%26%20TTS-734F96?style=flat-square"
+    markdown: "[![Features](https://img.shields.io/badge/Features-OCR%20%26%20TTS-734F96?style=flat-square)
