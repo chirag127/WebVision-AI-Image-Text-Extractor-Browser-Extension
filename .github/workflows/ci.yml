@@ -1,0 +1,158 @@
+name: WebVision CI/CD Pipeline
+
+# ===============================================================================
+# APEX TECHNICAL AUTHORITY CI/CD DEFINITION (2025/2026 STANDARD)
+# Project: WebVision-AI-Image-Text-Extractor-Browser-Extension
+# Stack Detected: TypeScript/Vite (Browser Extension Framework)
+# Philosophy: Zero-Defect, High-Velocity, Future-Proof
+# ===============================================================================
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  # --- 1. LINT & FORMAT VALIDATION (Biome & TypeScript)
+  lint_validate:
+    name: Lint & Format Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' 
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Biome Check (Lint/Format)
+        # Assuming 'biome check' is configured in package.json for strict validation
+        run: npx @biomejs/biome check --no-apply --error-on-warnings
+
+  # --- 2. UNIT & INTEGRATION TESTING (Vitest)
+  test_suite:
+    name: Unit & Integration Tests
+    needs: lint_validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Vitest Suite
+        # Assuming 'test:unit' runs Vitest in CI mode
+        run: npm run test:unit
+
+      - name: Upload Test Coverage Report
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/lcov.info
+          flags: unit
+
+  # --- 3. E2E TESTING (Playwright - Simulating Browser Environment)
+  e2e_tests:
+    name: End-to-End Tests
+    needs: test_suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright Tests
+        # Assuming 'test:e2e' executes Playwright tests
+        run: npm run test:e2e
+        env:
+          # Ensure necessary API keys/secrets are available for AI interaction during E2E if required
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+  # --- 4. BUILD & ARTIFACT CREATION (Vite/WXT Build)
+  build_package:
+    name: Build Artifact
+    needs: test_suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Production Artifact
+        # Assuming 'build' command generates the necessary zip/dist files for the extension stores
+        run: npm run build
+
+      - name: Archive Production Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: webvision-extension-build
+          path: dist/ # Adjust path based on Vite/WXT output configuration
+          retention-days: 5
+
+  # --- 5. DEPLOYMENT (Conditional - Only on Main Branch Push)
+  deploy:
+    name: Publish to Chrome/Firefox
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: [build_package, lint_validate]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: webvision-extension-build
+          path: ./release_package
+
+      # Placeholder for actual deployment steps (e.g., using web-ext or manual signing)
+      - name: Placeholder: Verify Release Package Content
+        run: ls -R ./release_package
+        
+      # Example: Using secrets for publishing credentials
+      # - name: Deploy to Chrome Web Store
+      #   uses: chrome-webstore/publish@v1
+      #   with:
+      #     client_id: ${{ secrets.CWS_CLIENT_ID }}
+      #     client_secret: ${{ secrets.CWS_CLIENT_SECRET }}
+      #     refresh_token: ${{ secrets.CWS_REFRESH_TOKEN }}
+      #     zip: ./release_package/webvision-extension-build.zip
+
+# ===============================================================================
+# AGGREGATE STATUS BADGE DEFINITION
+# ===============================================================================
+
+workflow_dispatch:
