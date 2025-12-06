@@ -1,62 +1,52 @@
+# Bug Report
+
+Thank you for taking the time to report a bug! Your feedback helps us improve the `ImageTextReader-AI-Powered-OCR-Browser-Extension` for everyone.
+
+Please provide as much detail as possible to help us diagnose and fix the issue.
+
+## Report Details
+
+**1. What is the expected behavior?**
+
+Describe what you expected the extension to do.
+
+**2. What is the actual behavior?**
+
+Describe what happened instead. Please be specific.
+
+**3. Steps to Reproduce**
+
+Please provide clear, step-by-step instructions on how to reproduce the bug. Include:
+*   The URL where the bug occurred (if applicable).
+*   Any specific actions taken within the extension or browser.
+*   Any specific images or elements that triggered the bug.
+
+
+1. Open browser to [URL/Specific Page]
+2. Perform action A
+3. Perform action B
+4. Observe unexpected behavior
+
+
+**4. Environment**
+
+*   **Browser:** (e.g., Chrome 120, Firefox 118)
+*   **Operating System:** (e.g., Windows 11, macOS Ventura 13.5, Ubuntu 22.04)
+*   **Extension Version:** (If known, otherwise state 'latest')
+
+**5. Screenshots or Screen Recordings (Optional but Recommended)**
+
+If possible, please attach screenshots or a screen recording that clearly illustrates the bug. This is often the fastest way to help us understand the problem.
+
+**6. Additional Information (Optional)**
+
+Any other context, logs, or details that you think might be relevant to debugging this issue.
+
 ---
-name: Bug Report
-about: Report a reproducible bug or unexpected behavior in WebVision.
-labels: ['bug', 'triage-needed']
-assignees: ['chirag127']
----
 
-## 🐛 Bug Report
+### For Maintainers: Apex Technical Authority Protocol
 
-Thank you for taking the time to report a bug in **WebVision-AI-Image-Text-Extractor-Browser-Extension**! Your detailed report helps us improve the quality and stability of the extension. Please fill out the following sections as completely as possible.
-
-### 📝 Description of the Bug
-
-A clear and concise description of what the bug is.
-
-### 再現手順 (Steps to Reproduce)
-
-Steps to reproduce the behavior:
-
-1.  Go to '...'
-2.  Click on '....'
-3.  Scroll down to '....'
-4.  See error
-
-### 🎯 Expected Behavior
-
-A clear and concise description of what you expected to happen.
-
-### 💥 Actual Behavior
-
-A clear and concise description of what actually happened.
-
-### 🖥️ Environment
-
-*   **Browser:** [e.g., Google Chrome, Mozilla Firefox, Microsoft Edge]
-*   **Browser Version:** [e.g., 120.0.6099.199 (Official Build) (64-bit)]
-*   **Operating System:** [e.g., macOS Ventura 13.5, Windows 11, Ubuntu 22.04]
-*   **WebVision Extension Version:** [e.g., 1.0.0 (found in `chrome://extensions` or equivalent)]
-
-### 📸 Screenshots & Recordings (Optional)
-
-If applicable, add screenshots or a short video recording to help explain your problem.
-
-### 📄 Console Output / Error Messages
-
-If the bug occurs in the browser, please open the developer console (usually F12 or right-click -> Inspect, then navigate to the 'Console' tab) and copy any relevant error messages or logs here.
-
-
-PASTE CONSOLE OUTPUT HERE
-
-
-### 🌐 Relevant URL
-
-If the bug is specific to a particular webpage or domain, please provide the URL:
-
-
-https://example.com
-
-
-### 💡 Additional Context
-
-Add any other context about the problem here (e.g., specific image types, network conditions, conflicts with other extensions). Is this a new issue, or has it always been present for you?
+*   **Repository:** `ImageTextReader-AI-Powered-OCR-Browser-Extension`
+*   **Link:** `https://github.com/chirag127/ImageTextReader-AI-Powered-OCR-Browser-Extension`
+*   **Last Reviewed:** December 2025
+*   **AI Agent Directives:** Refer to `.github/AGENTS.md` for current operational protocols and tech stack specifications.
